@@ -1,11 +1,10 @@
 {
-  "title": "moz://a protocol handler",
-  "name": "moz-handler",
-  "id": "moz-handler@mozilla.org",
-  "version": "0.1.0",
-  "description": "a moz: protocol handler for moz://a URLs",
+  "title": "Huft: Human friendly Tor",
+  "name": "huft",
+  "version": "0.0.1",
+  "description": "A human-friendly way to express Tor addresses.",
   "main": "index.js",
-  "author": "Myk Melez <myk@mykzilla.org>",
+  "author": "CapacitorSet",
   "engines": {
     "firefox": ">=38.0a1",
     "fennec": ">=38.0a1"

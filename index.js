@@ -1,17 +1,21 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+/*
+Original license:
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+  Based on code in https://bugzilla.mozilla.org/show_bug.cgi?id=1271553.
+*/
 
 'use strict';
-
-// Based on code in https://bugzilla.mozilla.org/show_bug.cgi?id=1271553.
 
 let self = require('sdk/self');
 let { Cc, Ci } = require('chrome');
 
-const HANDLER_NAME = 'moz://a protocol handler';
-const PROTOCOL_SCHEME = 'moz';
-const URI_TEMPLATE = 'https://mozilla.github.io/moz-handler/?u=%s';
+const HANDLER_NAME = 'huft://a protocol handler';
+const PROTOCOL_SCHEME = 'huft';
+const URI_TEMPLATE = 'https://capacitorset.github.io/huft/?u=%s';
 
 if (self.loadReason === 'install' || self.loadReason === 'enable') {
   let handler = Cc['@mozilla.org/uriloader/web-handler-app;1'].
