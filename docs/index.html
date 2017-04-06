@@ -1,23 +1,22 @@
 <!doctype html>
-<script type="application/javascript">
-const urls = {
-  '':                 'https://www.mozilla.org/',
-  'all-hands':        'https://wiki.mozilla.org/All_Hands',
-  'book':             'about:mozilla',
-  'developer':        'https://developer.mozilla.org/',
-  'firefox':          'https://firefox.com/',
-  'firefox/android':  'https://www.mozilla.org/firefox/android/',
-  'firefox/nightly':  'https://nightly.mozilla.org/',
-  'rust':             'https://www.rust-lang.org/',
-  'rust-community':   'https://community.rs',
-  'servo':            'https://servo.org',
-};
+<meta charset="utf8" />
+<script src="wordlist.js"></script><!-- Imports the wordlist as "w" -->
+<script src="lib.es5.min.js"></script>
+<h1>Error!</h1>
+<code id="error">
+	<noscript>Javascript must be enabled.</noscript>
+</code>
 
-const key = new URL(location).searchParams.get('u');
-if (key) {
-  const url = urls[key.substr(8)];
-  if (url) {
-    location.replace(url);
-  }
+<script type="application/javascript">
+try {
+	var parts = window.location.hash.match(/^#huft:\/\/([a-z\-]+)(\/.+)?$/);
+
+	if (parts === null) throw new Error("Couldn't parse Huft URL");
+
+	var newPath = toOnion(parts[1]);
+
+	location.replace(`http://${newPath}.onion/`);
+} catch (err) {
+	document.getElementById("error").textContent = err.toString().replace(/^Error: /, "");
 }
 </script>

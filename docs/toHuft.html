@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf8" />
+<script src="wordlist.js"></script><!-- Imports the wordlist as "w" -->
+<script src="lib.es5.min.js"></script>
+<script type="application/javascript">
+function showTranslation() {
+	try {
+		const addr = toHuft(document.getElementById("address").value);
+		console.log(toOnion(addr));
+		document.getElementById("huft").textContent = `huft://${addr}`;
+	} catch (e) {
+		alert(e);
+	}
+}
+</script>
+<form id="addrForm" onsubmit="showTranslation()" action="#">
+	<input type="text" id="address" placeholder="eg. expyuzz4wqqyqhjn.onion" />
+	<input type="submit" value="Translate" />
+</form>
+<br />
+The Huft address is <kbd id="huft"></kbd>
