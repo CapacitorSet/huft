@@ -2,10 +2,25 @@
 <meta charset="utf8" />
 <script src="wordlist.js"></script><!-- Imports the wordlist as "w" -->
 <script src="lib.es5.min.js"></script>
-<h1>Error!</h1>
-<code id="error">
-	<noscript>Javascript must be enabled.</noscript>
-</code>
+<noscript>
+	<style type="text/css">
+		#loadingDiv {
+			display: none;
+		}
+		#errDiv {
+			display: initial !important;
+		}
+	</style>
+</noscript>
+<div id="loadingDiv">
+	<h1>Loading...</h1>
+</div>
+<div id="errDiv" style="display: none">
+	<h1>Error!</h1>
+	<code id="error" a=b>
+		<noscript>Javascript must be enabled.</noscript>
+	</code>
+</div>
 
 <script type="application/javascript">
 try {
@@ -17,6 +32,9 @@ try {
 
 	location.replace(`http://${newPath}.onion/`);
 } catch (err) {
+	document.getElementById("loadingDiv").style.display = "none";
+	document.getElementById("errDiv").style.display = "block";
+
 	document.getElementById("error").textContent = err.toString().replace(/^Error: /, "");
 }
 </script>
