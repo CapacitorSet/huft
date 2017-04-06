@@ -9,7 +9,7 @@
 
 <script type="application/javascript">
 try {
-	var parts = window.location.hash.match(/^#huft:\/\/([a-z\-]+)(\/.+)?$/);
+	var parts = decodeURIComponent(window.location.hash).match(/^#huft:\/\/([a-z\-]+)(\/.+)?$/);
 
 	if (parts === null) throw new Error("Couldn't parse Huft URL");
 
