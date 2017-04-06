@@ -13,7 +13,7 @@ try {
 
 	if (parts === null) throw new Error("Couldn't parse Huft URL");
 
-	var newPath = toOnion(parts[1]);
+	var newPath = window.toOnion(parts[1]);
 
 	location.replace(`http://${newPath}.onion/`);
 } catch (err) {

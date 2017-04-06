@@ -17,6 +17,7 @@ function toHuft(addr) {
 		.map((n) => w[n])
 		.join('-');
 }
+window.toHuft = toHuft;
 
 function toOnion(addr) {
 	return addr
@@ -31,6 +32,7 @@ function toOnion(addr) {
 		.reverse()
 		.slice(-16);
 }
+window.toOnion = toOnion;
 
 // https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
