@@ -1,0 +1,42 @@
+<!doctype html>
+<meta charset="utf8" />
+<script src="wordlist.js"></script><!-- Imports the wordlist as "w" -->
+<script src="lib.es5.min.js"></script>
+<noscript>
+	<style type="text/css">
+		#loadingDiv {
+			display: none;
+		}
+		#errDiv {
+			display: initial !important;
+		}
+	</style>
+</noscript>
+<div id="loadingDiv">
+	<h1 id="loadingTitle">Loading...</h1>
+</div>
+<div id="errDiv" style="display: none">
+	<h1>Error!</h1>
+	<code id="error" a=b>
+		<noscript>Javascript must be enabled.</noscript>
+	</code>
+</div>
+
+<script type="application/javascript">
+try {
+	var parts = decodeURIComponent(window.location.hash).match(/^#web\+huft:\/\/([a-z\-]+)(\/.+)?$/);
+
+	if (parts === null) throw new Error("Couldn't parse Huft URL");
+
+	var newPath = window.toOnion(parts[1]);
+
+	document.getElementById("loadingTitle").textContent = `Loading http://${newPath}.onion${parts[2]}...`;
+	location.replace(`http://${newPath}.onion${parts[2]}`);
+} catch (err) {
+	console.log(decodeURIComponent(window.location.hash))
+	document.getElementById("loadingDiv").style.display = "none";
+	document.getElementById("errDiv").style.display = "block";
+
+	document.getElementById("error").textContent = err.toString().replace(/^Error: /, "");
+}
+</script>
